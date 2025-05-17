@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Grey Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .glass-container {
+      background: #ffffffcc;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      width: 320px;
+      border: 1px solid #ccc;
+      margin-bottom: 40px;
+    }
+
+    #display {
+      width: 100%;
+      height: 60px;
+      font-size: 26px;
+      text-align: right;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #f1f1f1;
+      color: #333;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      background: #d9d9d9;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    button:hover {
+      background: #bfbfbf;
+    }
+
+    .equal {
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+    }
+
+    .equal:hover {
+      background: #3e8e41;
+    }
+
+    .clear {
+      background: #f44336;
+      color: white;
+    }
+
+    .clear:hover {
+      background: #c62828;
+    }
+
+    .info-box {
+      max-width: 800px;
+      background: #ffffffdd;
+      border-radius: 20px;
+      padding: 25px;
+      color: #444;
+      border: 1px solid #ccc;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .info-box h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .code-snippet {
+      background: #f5f5f5;
+      padding: 10px;
+      border-left: 4px solid #4caf50;
+      font-family: monospace;
+      color: #555;
+      margin: 10px 0;
+      white-space: pre-wrap;
+      border-radius: 6px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-container">
+    <input type="text" id="display" disabled />
+    <div class="buttons">
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('/')">/</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+      <button onclick="appendToDisplay('+')">+</button>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h2>📘 How This Calculator Works</h2>
+    <p>This calculator uses HTML, CSS, and JavaScript to build a simple but stylish interface. Here’s how it works:</p>
+
+    <ul>
+      <li><strong>HTML</strong> creates the structure (buttons, screen)</li>
+      <li><strong>CSS</strong> styles the layout using a grey-white theme with soft shadows</li>
+      <li><strong>JavaScript</strong> adds the functionality to perform calculations</li>
+    </ul>
+
+    <div class="code-snippet">
+function appendToDisplay(value) {
+  document.getElementById('display').value += value;
+}
+
+function clearDisplay() {
+  document.getElementById('display').value = '';
+}
+
+function calculate() {
+  try {
+    let result = eval(document.getElementById('display').value);
+    document.getElementById('display').value = result;
+  } catch {
+    document.getElementById('display').value = 'Error';
+  }
+}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h2>🧮 Why Calculators Make Life Simple</h2>
+    <p>Calculators are essential tools that make our lives easier every day. They help us:</p>
+    <ul>
+      <li>✅ Quickly solve math problems without stress</li>
+      <li>✅ Avoid mistakes when calculating money, bills, or budgets</li>
+      <li>✅ Save time in school, work, and personal tasks</li>
+    </ul>
+    <p>Whether you're a student, a business owner, or just splitting a dinner bill, a calculator brings convenience and clarity into your hands.</p>
+    <p>This website also helps you understand how a calculator is built — combining design, logic, and technology in one simple app. 💡</p>
+  </div>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      try {
+        let result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
+
+</body>
+</html>
